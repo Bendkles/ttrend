@@ -20,8 +20,10 @@ pipeline {
 
         stage('SCM') {
             steps {
-                git 'https://github.com/foo/bar.git'
-            }
+                script {
+                    git credentialsId: 'Github-Cred', url: 'https://github.com/foo/bar.git'
+                }
+            }    
         }
         
         stage('SonarQube analysis') {
