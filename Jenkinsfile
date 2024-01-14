@@ -21,7 +21,7 @@ pipeline {
         stage('SCM') {
             steps {
                 script {
-                    git credentialsId: 'Github-Cred', url: 'https://github.com/foo/bar.git'
+                    git credentialsId: 'Github-Cred', url: 'https://github.com/bendkles/ttrend.git'
                 }
             }    
         }
