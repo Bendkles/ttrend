@@ -5,22 +5,20 @@ pipeline {
             label 'maven'
         }
     }
-
-environment {
-    PATH = "/opt/apache-maven-3.9.6/bin:$PATH"
-}
+    
+    environment {
+        PATH = "/opt/apache-maven-3.9.6/bin:$PATH"
+        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
+    }
+    
     stages {
-        stage("build"){
+        stage("build") {
             tools {
-              jdk 'java-11' 
+                jdk 'java-11'
             }
             steps {
-                withEnv ( [  'JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64',
-                'PATH=/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH'
-                          ]) {
                 sh 'mvn clean deploy'
             }
         }
     }
 }
-
