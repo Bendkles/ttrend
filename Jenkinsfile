@@ -1,5 +1,4 @@
 
-Pash 4: Building stage   
 pipeline {
     agent {
         node {
