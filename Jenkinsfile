@@ -21,7 +21,7 @@ pipeline {
             environment {
                 scannerHome = tool 'sonar-scanner'
                 mavenHome = tool 'maven-3.9.6-java-17'
-                JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
+                JAVA_HOME = "/usr/lib/jvm/java-17-openjdk-amd64/bin/java"
             }
             steps {
                 sh "echo $JAVA_HOME"  // Print JAVA_HOME value
