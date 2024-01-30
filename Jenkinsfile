@@ -12,6 +12,9 @@ pipeline {
 
     stages {
         stage("build") {
+            environment {
+                mavenHome = tool 'maven-3.9.6-java-11' // Use Java 11 for Maven build
+            }
             steps {
                 sh 'mvn clean deploy'
             }
@@ -19,13 +22,10 @@ pipeline {
 
         stage('SonarQube analysis') {
             environment {
-                scannerHome = tool 'sonar-scanner'
-                mavenHome = tool 'maven-3.9.6-java-17'
-                JAVA_HOME = "/usr/lib/jvm/java-17-openjdk-amd64/bin/java"
+                JAVA_HOME = "/usr/lib/jvm/java-17-openjdk-amd64" // Use Java 17 for SonarQube
             }
             steps {
-                sh "echo $JAVA_HOME"  // Print JAVA_HOME value
-                withSonarQubeEnv('sonarqube-server') {
+                withEnv {
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
