@@ -25,7 +25,9 @@ pipeline {
                 JAVA_HOME = "/usr/lib/jvm/java-17-openjdk-amd64" // Use Java 17 for SonarQube
             }
             steps {
-                withEnv {
+                withEnv(overrides: [
+                    JAVA_HOME: "/usr/lib/jvm/java-17-openjdk-amd64" // Ensure Java 17 is used within the block
+                ]) {
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
