@@ -1,2 +1,7 @@
 
 ./target/*
+/target/*
+/Local-Files
+/.vscode/*
+/.vscode
+
