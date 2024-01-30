@@ -17,7 +17,7 @@ environment {
         }
 	
     stage('SonarQube analysis') {
-	environment
+	environment {
 	   scannerHome = tool 'sonar-scanner'
 	}
 	steps{
