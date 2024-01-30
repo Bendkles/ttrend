@@ -6,13 +6,10 @@ pipeline {
         }
     }
 
-environment {
-    PATH = "/opt/apache-maven-3.9.6/bin:$PATH"
-}
     stages {
-        stage("build"){
+        stage('Clone-Code') {
             steps {
-                sh 'mvn clean deploy'
+                git branch: 'main', url: 'https://github.com/Bendkles/ttrend.git'
             }
         }
     }
